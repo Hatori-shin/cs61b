@@ -1,4 +1,4 @@
-public class Body{
+public class Body {
 	double xxPos;
 	double yyPos;
 	double xxVel;
@@ -7,7 +7,7 @@ public class Body{
 	String imgFileName;
 
 	public Body(double xP, double yP, double xV,
-		double yV, double m, String img){
+		double yV, double m, String img) {
 		xxPos = xP;
 		yyPos = yP;
 		xxVel = xV;
@@ -16,7 +16,7 @@ public class Body{
 		imgFileName = img;
 	}
 
-	public Body(Body b){
+	public Body(Body b) {
 		xxPos = b.xxPos;
 		yyPos = b.yyPos;
 		xxVel = b.xxVel;
@@ -24,4 +24,12 @@ public class Body{
 		mass = b.mass;
 		imgFileName = b.imgFileName;
 	}
+
+	public double calcDistance(Body b) {
+		double dx = Math.abs(this.xxPos - b.xxPos);
+		double dy = Math.abs(this.yyPos - b.yyPos);
+		double rr = Math.sqrt(dx * dx + dy * dy);
+		return rr;
+	}
+
 }
