@@ -86,7 +86,7 @@ public class Body {
 		this.xxVel = this.xxVel + dt * aX;
 		this.yyVel = this.yyVel + dt * aY;
 		this.xxPos = this.xxPos + dt * this.xxVel;
-		this.yyPos= this.yyPos + dt * this.yyVel;
+		this.yyPos = this.yyPos + dt * this.yyVel;
 
 	}
 
