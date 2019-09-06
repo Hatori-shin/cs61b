@@ -56,4 +56,28 @@ public class Body {
 		return Fy;
 	}
 
+	public double calcNetForceExertedByX (Body[] allBodys) {
+		double fxSum = 0;
+		for (int i = 0; i < allBodys.length; i++){
+			if (this.equals(allBodys[i])){
+				continue;
+			}
+			double fx = this.calcForceExertedByX(allBodys[i]);
+			fxSum += fx;
+		}
+		return fxSum;
+	}
+
+	public double calcNetForceExertedByY (Body[] allBodys) {
+		double fySum = 0;
+		for (int i = 0; i < allBodys.length; i++){
+			if (this.equals(allBodys[i])){
+				continue;
+			}
+			double fy = this.calcForceExertedByY(allBodys[i]);
+			fySum += fy;
+		}
+		return fySum;
+	}
+
 }

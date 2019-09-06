@@ -23,3 +23,7 @@ final static double GRAV = 6.67e-11;
 
 科学计数法的写法 1.03e-7 = 1.03 * 10^(-7)
 写在class里面不要写在local method里面
+
+写calcNetForceExertedByX and calcNetForceExertedByY的时候忽视了目标星球是自己本身的情况。
+所以r变成0了没法计算了，记得用一个equals避免这个情况
+
