@@ -27,3 +27,17 @@ final static double GRAV = 6.67e-11;
 写calcNetForceExertedByX and calcNetForceExertedByY的时候忽视了目标星球是自己本身的情况。
 所以r变成0了没法计算了，记得用一个equals避免这个情况
 
+
+for enhanced loop写法
+
+`java
+for (int i=0; i < array.length; i++) {
+    System.out.println("Element: " + array[i]);
+}
+//new form
+for (String element : array) {
+    System.out.println("Element: " + element);
+}
+`
+
+
