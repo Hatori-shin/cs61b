@@ -32,4 +32,11 @@ public class Body {
 		return rr;
 	}
 
+	public double calcForceExertedBy (Body b) {
+		double force;
+		double r = this.calcDistance(b);
+		force =  6.67 * Math.pow(10, -11) * this.mass * b.mass / (r * r);
+		return force;
+	}
+
 }
