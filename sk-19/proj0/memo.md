@@ -11,3 +11,15 @@ Saturn：土星
 第二个constructor就卡壳了…查概念：copy constructor
 目的就是为了可以方便的copy object
 第一个constructor按照他给的官方写法写了，其实可以用this写更快。
+
+1.3 Writing the Body Class
+
+non-static method的写法 使用起来是：instance.method（instance）
+final static的宣言
+
+`java
+final static double GRAV = 6.67e-11;
+`
+
+科学计数法的写法 1.03e-7 = 1.03 * 10^(-7)
+写在class里面不要写在local method里面

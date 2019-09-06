@@ -5,6 +5,7 @@ public class Body {
 	double yyVel;
 	double mass;
 	String imgFileName;
+	final static double GRAV = 6.67e-11;
 
 	public Body(double xP, double yP, double xV,
 		double yV, double m, String img) {
@@ -35,8 +36,24 @@ public class Body {
 	public double calcForceExertedBy (Body b) {
 		double force;
 		double r = this.calcDistance(b);
-		force =  6.67 * Math.pow(10, -11) * this.mass * b.mass / (r * r);
+		force =  GRAV * this.mass * b.mass / (r * r);
 		return force;
+	}
+
+	public double calcForceExertedByX (Body b) {
+		double dx = b.xxPos - this.xxPos;
+		double r = this.calcDistance(b);
+		double force = this.calcForceExertedBy(b);
+		double Fx = force * dx / r;
+		return Fx;
+	}
+
+	public double calcForceExertedByY (Body b) {
+		double dy = b.yyPos - this.xxPos;
+		double r = this.calcDistance(b);
+		double force = this.calcForceExertedBy(b);
+		double Fy = force * dy / r;
+		return Fy;
 	}
 
 }
