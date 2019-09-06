@@ -1,3 +1,5 @@
 # cs61b
 
-exercises & homework & lab & project
+在线直播刷题
+垃圾代码
+每日更新
