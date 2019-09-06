@@ -90,6 +90,11 @@ public class Body {
 
 	}
 
+	public void draw() {
+	    String imageToDraw = "images/" + this.imgFileName;
+		StdDraw.picture(this.xxPos, this.yyPos, imageToDraw);
+	}
+
 
 
 }

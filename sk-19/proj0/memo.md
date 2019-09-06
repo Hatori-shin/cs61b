@@ -42,4 +42,6 @@ for (String element : array) {
 }
 ```
 
+## 1.5 Getting Started with the Simulator(NBody.java)
+
 

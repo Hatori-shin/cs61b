@@ -19,11 +19,11 @@ public class StdDrawDemo {
 		  * Only when you call show() does your drawing get copied from the
 		  * offscreen canvas to the onscreen canvas, where it is displayed
 		  * in the standard drawing window. */
-		StdDraw.enableDoubleBuffering();
+		//StdDraw.enableDoubleBuffering();
 
 		/** Sets up the universe so it goes from
 		  * -100, -100 up to 100, 100 */
-		StdDraw.setScale(-100, 100);
+		StdDraw.setScale(-23.4, 45.2);
 
 		/* Clears the drawing window. */
 		StdDraw.clear();
@@ -108,7 +108,7 @@ public class StdDrawDemo {
 		/** Try commenting out some of these calls and
 		* notice the differences. */
 		drawThree();
-		//drawRandom();
+		// drawRandom();
 		//drawZoom();
 	}
 }
