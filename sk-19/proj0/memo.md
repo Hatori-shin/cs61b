@@ -19,9 +19,9 @@ Saturn：土星
 non-static method的写法 使用起来是：instance.method（instance）
 final static的宣言
 
-`java
+```java
 final static double GRAV = 6.67e-11;
-`
+```
 
 科学计数法的写法 1.03e-7 = 1.03 * 10^(-7)
 写在class里面不要写在local method里面
