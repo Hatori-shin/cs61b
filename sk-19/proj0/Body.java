@@ -27,8 +27,8 @@ public class Body {
 	}
 
 	public double calcDistance(Body b) {
-		double dx = Math.abs(this.xxPos - b.xxPos);
-		double dy = Math.abs(this.yyPos - b.yyPos);
+		double dx = this.xxPos - b.xxPos;
+		double dy = this.yyPos - b.yyPos;
 		double rr = Math.sqrt(dx * dx + dy * dy);
 		return rr;
 	}
@@ -59,11 +59,10 @@ public class Body {
 	public double calcNetForceExertedByX (Body[] allBodys) {
 		double fxSum = 0;
 		for (Body object: allBodys){
-			if (this.equals(object)){
-				continue;
-			}
+			if (!this.equals(object)) {
 			double fx = this.calcForceExertedByX(object);
 			fxSum += fx;
+			}
 		}
 		return fxSum;
 	}
@@ -71,11 +70,10 @@ public class Body {
 	public double calcNetForceExertedByY (Body[] allBodys) {
 		double fySum = 0;
 		for (Body object: allBodys){
-			if (this.equals(object)){
-				continue;
-			}
+			if (!this.equals(object)) {
 			double fy = this.calcForceExertedByY(object);
 			fySum += fy;
+			}
 		}
 		return fySum;
 	}

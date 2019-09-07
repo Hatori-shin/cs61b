@@ -43,30 +43,39 @@ public class NBody {
 		StdDraw.enableDoubleBuffering();
 
 		double time = 0;
+
+		
 		
 		while (time <= T) {
 
 			
-
 			double[] xForces = new double[bodies.length];
 			double[] yForces = new double[bodies.length];
 			
-			StdDraw.picture(0, 0, imageToDraw);
+			
+			
 
 			for(int i = 0; i < bodies.length; i++){
 				xForces[i] = bodies[i].calcNetForceExertedByX(bodies);
 				yForces[i] = bodies[i].calcNetForceExertedByY(bodies);
-
 			}
+
+			
 
 			for(int i = 0; i < bodies.length; i++){ 
 				bodies[i].update(dt ,xForces[i],yForces[i]);
+
+			}
+
+			StdDraw.picture(0, 0, imageToDraw);
+
+			for(int i = 0; i < bodies.length; i++){ 
 				bodies[i].draw();
 
 			}
 
 			StdDraw.show();
-			StdDraw.pause(1);
+			StdDraw.pause(10);
 
 			time += dt;
 		}
