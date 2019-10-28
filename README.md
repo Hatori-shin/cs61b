@@ -1,5 +1,3 @@
 # cs61b
 
-在线直播刷题
-垃圾代码
-每日更新
+Notes, homework, project and lab about CS61B
