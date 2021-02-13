@@ -1,96 +1,68 @@
-public class NBody {
-
-	public static double readRadius(String filename) {
-		In in = new In(filename);
-		int N = in.readInt();
-		double rOfUniverse = in.readDouble();
-		return rOfUniverse;
+class NBody {
+	public static double readRadius(String fileName){
+		In in = new In(fileName);
+		int numberOfPlanets = in.readInt();
+		double radius = in.readDouble();
+		return radius;
 	}
 
-	public static Body[] readBodies(String filename) {
-		In in = new In(filename);
-		int N = in.readInt();
-		double R = in.readDouble();
-		Body[] allBodys = new Body[N];
-		for (int i = 0; i < N; i++) {
-			double xxPos = in.readDouble();
-			double yyPos = in.readDouble();
-			double xxVel = in.readDouble();
-			double yyVel = in.readDouble();
-			double mass = in.readDouble();
-			String imgFileName = in.readString();
-			allBodys[i] = new Body(xxPos,yyPos,xxVel,yyVel,mass,imgFileName);
+	public static Body[] readBodies(String fileName){
+		In in = new In(fileName);
+		int numberOfPlanets = in.readInt();
+		double radius = in.readDouble();
+		Body[] bodys = new Body[numberOfPlanets]; 
+		int i = 0;
+		while(i < numberOfPlanets){
+				double xPos = in.readDouble();
+				double yPos = in.readDouble();
+				double xVel = in.readDouble();
+				double yVel = in.readDouble();
+				double mass = in.readDouble();
+				String img = in.readString();
+				bodys[i] = new Body(xPos,yPos,xVel,yVel,mass,img);
+				i++;
 		}
-		return allBodys;
+		return bodys;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
+		StdDraw.enableDoubleBuffering();
+		double time = 0;
 		double T = Double.parseDouble(args[0]);
+
 		double dt = Double.parseDouble(args[1]);
 		String filename = args[2];
-		double radius = readRadius(filename);
-		Body[] bodies = readBodies(filename);
+		double radius = NBody.readRadius(filename);
+		Body[] bodys = readBodies(filename);
+		StdDraw.setScale(-radius, radius);
 
-		
-		String imageToDraw = "images/starfield.jpg";
-
-		StdDraw.setXscale(-radius, radius);
-		StdDraw.setYscale(radius, -radius); 
-
-		
-
-		
-		StdDraw.enableDoubleBuffering();
-
-		double time = 0;
-
-		
-		
-		while (time <= T) {
-
-			
-			double[] xForces = new double[bodies.length];
-			double[] yForces = new double[bodies.length];
-			
-			
-			
-
-			for(int i = 0; i < bodies.length; i++){
-				xForces[i] = bodies[i].calcNetForceExertedByX(bodies);
-				yForces[i] = bodies[i].calcNetForceExertedByY(bodies);
+		for(time = 0; time < T; time = time + dt){
+			double[] xForces = new double[bodys.length];
+			double[] yForces = new double[bodys.length];
+			for(int i = 0; i < bodys.length; i++){
+				xForces[i] = bodys[i].calcNetForceExertedByX(bodys);
+				yForces[i] = bodys[i].calcNetForceExertedByY(bodys);
 			}
 
-			
-
-			for(int i = 0; i < bodies.length; i++){ 
-				bodies[i].update(dt ,xForces[i],yForces[i]);
-
+			for(int i = 0; i < bodys.length; i++){
+				bodys[i].update(dt, xForces[i], yForces[i]);
 			}
 
-			StdDraw.picture(0, 0, imageToDraw);
+			StdDraw.picture(0, 0, "images/starfield.jpg");
 
-			for(int i = 0; i < bodies.length; i++){ 
-				bodies[i].draw();
-
+			for(Body b :bodys){
+				b.draw();
 			}
 
 			StdDraw.show();
 			StdDraw.pause(10);
-
-			time += dt;
 		}
-
-
-		StdOut.printf("%d\n", bodies.length);
-		StdOut.printf("%.2e\n", radius);			
-		for (int i = 0; i < bodies.length; i++) {
-   			StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
-            bodies[i].xxPos, bodies[i].yyPos, bodies[i].xxVel,
-            bodies[i].yyVel, bodies[i].mass, bodies[i].imgFileName);   
+		StdOut.printf("%d\n", bodys.length);
+		StdOut.printf("%.2e\n", radius);
+		for (int i = 0; i < bodys.length; i++) {
+		    StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
+		                  bodys[i].xxPos, bodys[i].yyPos, bodys[i].xxVel,
+		                  bodys[i].yyVel, bodys[i].mass, bodys[i].imgFileName);   
 		}
-			
-
-
 	}
-
 }
