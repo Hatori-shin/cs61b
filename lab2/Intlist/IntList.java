@@ -33,6 +33,14 @@ public class IntList {
         this(0, null);
     }
 
+    //要改变的原来的链表，不能只是创建一个新链表。
+
+
+    public void addFirst(int x, IntList L){
+        IntList temp = new IntList(x, L);
+        L = temp;
+    }
+
     /**
      * Returns a list equal to L with all elements squared. Destructive.
      */
@@ -43,6 +51,9 @@ public class IntList {
             L = L.rest;
         }
     }
+
+
+
 
     /**
      * Returns a list equal to L with all elements squared. Non-destructive.
